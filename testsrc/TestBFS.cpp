@@ -1,9 +1,9 @@
-// Tester for PA1 DFS
+// Tester for PA1 BFS
 
 #include <set>
 
 #include "TestGraph.hpp"
-#include "DFS.hpp"
+#include "BFS.hpp"
 
 int main(int argc, char * argv[]) {
     if (argc != 2) {
@@ -31,8 +31,8 @@ int main(int argc, char * argv[]) {
         exit(1);
     }
 
-    std::set<int> result = dfs(g, vertex);
-    std::cout << "Result of DFS: [ ";
+    std::set<int> result = bfs(g, vertex);
+    std::cout << "Result of BFS: [ ";
     for(auto it = result.begin(); it != result.end(); it++){
         std::cout << *it << " ";
     }

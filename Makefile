@@ -5,39 +5,54 @@
 CC=g++
 FLAGS=-std=c++0x -I./
 
-HEADERS=$(wildcard *.hpp)
-SOURCES=$(wildcard *.cpp)
-OBJECTS=$(SOURCES:.cpp=.o)
+TEST_DFS = testsrc/TestDFS.cpp DFS.cpp
+DFS = DFS.cpp Graph.hpp DFS.hpp
+TEST_BFS = testsrc/TestBFS.cpp BFS.cpp
+BFS = BFS.cpp Graph.hpp BFS.hpp
+TEST_SCC = testsrc/TestSCC.cpp SCC.cpp
+SCC = SCC.cpp Graph.hpp SCC.hpp
+TEST_TopOrder = testsrc/TestTopOrder.cpp TopOrder.cpp
+TopOrder = TopOrder.cpp Graph.hpp TopOrder.hpp
+PA_SRCS = $(TEST_DFS) $(DFS) $(TEST_BFS) $(BFS) $(TEST_SCC) $(SCC) $(TEST_TopOrder) $(TopOrder)
 
-TestDFS.o: testsrc/TestDFS.cpp $(HEADERS)
-	$(CC) -I testsrc/ $(FLAGS) -g -c testsrc/TestDFS.cpp
+BUILD = build
 
-TestBFS.o: testsrc/TestBFS.cpp $(HEADERS)
-	$(CC) -I testsrc/ $(FLAGS) -g -c testsrc/TestBFS.cpp
+$(BUILD):
+	mkdir $(BUILD)
 
-TestSCC.o: testsrc/TestSCC.cpp $(HEADERS)
-	$(CC) -I testsrc/ $(FLAGS) -g -c testsrc/TestSCC.cpp
+TestDFS : $(BUILD)/DFS.o $(BUILD)/TestDFS.o
+	$(CC) $(FLAGS) $^ -o $(BUILD)/$@
+$(BUILD)/TestDFS.o : $(TEST_DFS) | $(BUILD)
+	$(CC) $(FLAGS) -c $< -o $@
+$(BUILD)/DFS.o : $(DFS) | $(BUILD)
+	$(CC) $(FLAGS) -c $< -o $@
 
-TestTopOrder.o: testsrc/TestTopOrder.cpp $(HEADERS)
-	$(CC) -I testsrc/ $(FLAGS) -g -c testsrc/TestTopOrder.cpp
+TestBFS : $(BUILD)/BFS.o $(BUILD)/TestBFS.o
+	$(CC) $(FLAGS) $^ -o $(BUILD)/$@
+$(BUILD)/TestBFS.o : $(TEST_BFS) | $(BUILD)
+	$(CC) $(FLAGS) -c $< -o $@
+$(BUILD)/BFS.o : $(BFS) | $(BUILD)
+	$(CC) $(FLAGS) -c $< -o $@
 
-TestDFS: TestDFS.o DFS.o
-	$(CC) $(FLAGS) -g -o TestDFS.out TestDFS.o DFS.o
+TestSCC : $(BUILD)/DFS.o $(BUILD)/SCC.o $(BUILD)/TestSCC.o
+	$(CC) $(FLAGS) $^ -o $(BUILD)/$@
+$(BUILD)/TestSCC.o : $(TEST_SCC) | $(BUILD)
+	$(CC) $(FLAGS) -c $< -o $@
+$(BUILD)/SCC.o : $(SCC) | $(BUILD)
+	$(CC) $(FLAGS) -c $< -o $@
 
-TestBFS: TestBFS.o BFS.o
-	$(CC) $(FLAGS) -g -o TestBFS.out TestBFS.o BFS.o
-
-TestSCC: TestSCC.o SCC.o
-	$(CC) $(FLAGS) -g -o TestSCC.out TestSCC.o SCC.o
-
-TestTopOrder: TestTopOrder.o TopOrder.o
-	$(CC) $(FLAGS) -g -o TestTopOrder.out TestTopOrder.o TopOrder.o
+TestTopOrder : $(BUILD)/TopOrder.o $(BUILD)/TestTopOrder.o
+	$(CC) $(FLAGS) $^ -o $(BUILD)/$@
+$(BUILD)/TestTopOrder.o : $(TEST_TopOrder) | $(BUILD)
+	$(CC) $(FLAGS) -c $< -o $@
+$(BUILD)/TopOrder.o : $(TopOrder) | $(BUILD)
+	$(CC) $(FLAGS) -c $< -o $@
 
 TestAll: TestDFS TestBFS TestTopOrder TestSCC 
 
-%.o: %.cpp
-	$(CC) $(FLAGS) -g -c -o $@ $<
+all: TestAll
 
 clean:
-	rm -f *.o
-	rm -f *.out
+	rm -f build
+
+.PHONY: all

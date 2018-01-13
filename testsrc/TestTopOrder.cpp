@@ -1,6 +1,4 @@
 // Tester for PA1 TopOrder
-//
-// DO NOT MODIFY
 
 #include "TestGraph.hpp"
 #include "TopOrder.hpp"
@@ -20,10 +18,10 @@ int main(int argc, char * argv[]) {
         exit(1);
     }
 
-    std::list<char> topOrder = top_order(g);
+    std::list<char> topOrderList = top_order(g);
 
     std::cout << "Result of Topological Ordering: [ ";
-    for (auto it = topOrder.begin(); it != topOrder.end(); ++it) {
+    for (auto it = topOrderList.begin(); it != topOrderList.end(); ++it) {
         std::cout << *it << " ";
     }
     std::cout << "]" << std::endl;

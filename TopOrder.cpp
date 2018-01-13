@@ -1,22 +1,16 @@
-// CSE 101 Winter 2018 PA 1
+// CSE 101 Winter 2018, PA 1
 //
-// Name: TODO put both partners' info if applicable
-// PID: TODO
-// Sources of Help: TODO
-// Due: 1/26/2018 at 11:59 PM
-
-#ifndef __TOP_ORDER_CPP__
-#define __TOP_ORDER_CPP__
+// [solution]
 
 #include "Graph.hpp"
-#include <list>
 // include more libraries as needed
+#include <map>
+#include <list>
 
 template <class T>
 std::list<T> top_order(Graph<T>& g) {
-    std::list<T> topOrder;
-    // TODO
-    return topOrder;
+  std::list<T> res;
+  // TODO: Implement TopOrder
+  return res;
 }
 
-#endif

@@ -1,11 +1,8 @@
 // Tester for PA1 SCC
-// 
-// DO NOT MODIFY
 
 #include <list>
 #include <set>
 #include "TestGraph.hpp"
-#include "DFS.hpp"
 #include "SCC.hpp"
 
 int main(int argc, char * argv[]) {

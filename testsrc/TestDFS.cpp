@@ -1,6 +1,4 @@
 // Tester for PA1 DFS
-//
-// DO NOT MODIFY
 
 #include <set>
 
