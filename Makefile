@@ -55,4 +55,8 @@ all: TestAll
 clean:
 	rm -f build
 
+turnin:
+	tar -cvf PA1.tar *.cpp *.hpp
+	turnin -c cs101w PA1.tar
+
 .PHONY: all
