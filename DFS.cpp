@@ -10,7 +10,7 @@
 
 template <class T>
 std::set<T> dfs(Graph<T>& g, T t) {
-  std::list<T> res;
+  std::set<T> res;
   // TODO: Implement DFS
   return res;
 }

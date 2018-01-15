@@ -10,8 +10,8 @@
 
 template <class T>
 std::set<T> bfs(Graph<T>& g, T t) {
-  std::list<T> res;
+  std::set<T> res;
   // TODO: Implements BFS
-  retun res;
+  return res;
 }
 
