@@ -53,7 +53,7 @@ TestAll: TestDFS TestBFS TestTopOrder TestSCC
 all: TestAll
 
 clean:
-	rm -f build
+	rm -rf build
 
 turnin:
 	tar -cvf PA1.tar *.cpp *.hpp
