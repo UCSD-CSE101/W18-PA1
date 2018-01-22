@@ -5,6 +5,6 @@
 #include "Graph.hpp"
 
 template <class T>
-std::set<T> bfs(Graph<T>& g, Vertex<T> * t);
+std::set<T> bfs(Graph<T>& g, T t);
 
 #include "BFS.cpp"

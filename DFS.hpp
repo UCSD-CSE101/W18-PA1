@@ -5,6 +5,6 @@
 #include "Graph.hpp"
 
 template <class T>
-std::set<T> dfs(Graph<T>& g, Vertex<T> * t);
+std::set<T> dfs(Graph<T>& g, T t);
 
 #include "DFS.cpp"
